@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AllElements from "./screens/AllElements";
+import DetailsElement from "./screens/DetailsElement";
 
+const Stack = createNativeStackNavigator();
+// Falta hacer EL JUEGO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Poner el nombre y que la persona tenga que poner el símbolo
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: "#000000" },
+            headerTintColor: "white",
+            contentStyle: { backgroundColor: "#c2c2c2" },
+          }}
+        >
+          <Stack.Screen
+            name="AllElements"
+            options={{
+              title: "Watch all the elements of the Periodic Table!",
+            }}
+            component={AllElements}
+          />
+          <Stack.Screen
+            name="DetailsElement"
+            options={{
+              title: "Watch all the information of the element!",
+            }}
+            component={DetailsElement}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
