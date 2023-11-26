@@ -29,49 +29,16 @@ export default function Element({ props }) {
             : { ...styles.pressableStyle, backgroundColor: "#333333" };
         }}
       >
-        <View style={{ flexDirection: "row", alignContent: "space-between" }}>
+        <View style={styles.numberAndAtomContainer}>
           <View style={{ marginTop: 5 }}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: 25,
-                fontFamily: "Poppins_400Regular",
-              }}
-            >
-              {props.elementNumber}
-            </Text>
+            <Text style={styles.elementNumberStyle}>{props.atomicNumber}</Text>
           </View>
           <View style={{ marginTop: 9 }}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: 13,
-                fontFamily: "Poppins_400Regular",
-              }}
-            >
-              {props.elementAtom}
-            </Text>
+            <Text style={styles.elementAtomStyle}>{props.atomicMass}</Text>
           </View>
         </View>
-        <Text
-          style={{
-            color: "white",
-            fontSize: 40,
-            fontFamily: "Teko_700Bold",
-          }}
-        >
-          {props.elementSymbol}
-        </Text>
-        <Text
-          style={{
-            color: "white",
-            fontSize: 20,
-            fontFamily: "Poppins_400Regular",
-            paddingBottom: 16,
-          }}
-        >
-          {props.elementName}
-        </Text>
+        <Text style={styles.elementSymbolStyle}>{props.symbol}</Text>
+        <Text style={styles.elementNameStyle}>{props.name}</Text>
       </Pressable>
     </View>
   );
@@ -88,5 +55,31 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
+  },
+  numberAndAtomContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+  elementSymbolStyle: {
+    color: "white",
+    fontSize: 40,
+    fontFamily: "Teko_700Bold",
+  },
+  elementNameStyle: {
+    color: "white",
+    fontSize: 20,
+    fontFamily: "Poppins_400Regular",
+    paddingBottom: 16,
+  },
+  elementAtomStyle: {
+    color: "white",
+    fontSize: 13,
+    fontFamily: "Poppins_400Regular",
+  },
+  elementNumberStyle: {
+    color: "white",
+    fontSize: 25,
+    fontFamily: "Poppins_400Regular",
   },
 });
