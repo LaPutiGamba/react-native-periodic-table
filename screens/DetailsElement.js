@@ -51,7 +51,7 @@ export default function DetailsElement({ route, navigation }) {
     <>
       <View
         style={[
-          { flex: 1, backgroundColor: "#" + route.params.element.cpkHexColor },
+          { flex: 1, backgroundColor: "#" + route.params.element.cpkHexColor + "66"},
         ]}
       >
         <Text style={styles.elementNameHeader}>

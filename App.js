@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AllElements from "./screens/AllElements";
@@ -6,8 +5,7 @@ import DetailsElement from "./screens/DetailsElement";
 import GameElements from "./screens/GameElements";
 
 const Stack = createNativeStackNavigator();
-// Falta hacer EL JUEGO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// Poner el nombre y que la persona tenga que poner el símbolo
+
 export default function App() {
   return (
     <>
@@ -22,7 +20,7 @@ export default function App() {
           <Stack.Screen
             name="AllElements"
             options={{
-              title: "Watch all the elements of the Periodic Table!",
+            title: "Watch all the elements of the Periodic Table!",
             }}
             component={AllElements}
           />
@@ -45,5 +43,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({});

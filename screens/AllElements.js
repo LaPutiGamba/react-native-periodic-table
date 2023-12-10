@@ -26,9 +26,7 @@ export default function AllElements({ route, navigation }) {
       );
     } else {
       setFilteredElements(allElementsTable);
-    }
-    
-    console.log(filteredElements);
+    }   
   }
 
   function changeToGameScreen() {
@@ -71,11 +69,12 @@ export default function AllElements({ route, navigation }) {
       <View style={styles.centerList}>
         <FlatList
           data={filteredElements}
+          extraData={filteredElements}
           renderItem={({ item }) => {
             return <Element props={item}></Element>;
           }}
           keyExtractor={(item) => {
-            return item.elementNumber;
+            return item.atomicNumber;
           }}
           numColumns={3}
           horizontal={false}

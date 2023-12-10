@@ -1,33 +1,35 @@
 import { Pressable, TextInput, StyleSheet, View, Text } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFonts, Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Teko_700Bold } from "@expo-google-fonts/teko";
 import { allElementsTable } from "../constants/tableElements.js";
-import Element from "../components/Element.js";
+import GameElement from "../components/GameElement.js";
 
 export default function GameElements({ route, navigation }) {
-  const [result, setResult] = useState("Hydrogen");
+  const [selectedElement, setSelectedElement] = useState(allElementsTable[Math.floor(Math.random() * 118)]);
+  const [result, setResult] = useState("");
 
   function checkResult() {
-    setResult(result.charAt(0).toUpperCase() + result.slice(1).toLowerCase());
-    if (allElementsTable[0].name == result) {
+    const formattedResult = result.charAt(0).toUpperCase() + result.slice(1).toLowerCase();
+    if (selectedElement.name == formattedResult) {
       alert("You are right!");
+      setSelectedElement(allElementsTable[Math.floor(Math.random() * 118)]);
+      setResult("");
     } else {
-      alert("You are wrong! The element was " + allElementsTable[0].name + ".");
+      alert("You are wrong! The element was " + selectedElement.name + ".");
+      setSelectedElement(allElementsTable[Math.floor(Math.random() * 118)]);
+      setResult("");
     }
-
-    selectedElement = allElementsTable[Math.floor(Math.random() * 118)];
   }
-
-  let selectedElement = allElementsTable[Math.floor(Math.random() * 118)];
 
   return (
     <>
       <View style={styles.container}>
-        <Element props={allElementsTable[0]} />
+        <GameElement props={selectedElement} />
         <TextInput
           style={styles.textInputs}
           placeholder="Write the name of the element"
+          value={result}
           onChangeText={setResult}
         />
         <Pressable onPress={checkResult} style={styles.sendButton}>
@@ -52,10 +54,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     textAlign: "center",
+    fontFamily: "Poppins_400Regular",
+    fontSize: 15,
   },
   sendButton: {
     marginTop: 10,
-    backgroundColor: "#f0a9f5",
+    backgroundColor: "hsl(275, 80%, 60%)",
     borderRadius: 10,
     padding: 10,
   },
